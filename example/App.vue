@@ -5,15 +5,12 @@ import { useQuery } from '@tanstack/vue-query'
 import {
     ConnectButton,
     TransactionBlock,
-    useConfig,
     useCurrentAccount,
     useSignPersonalMessage,
     useSignTransactionBlock,
     useSignAndExecuteTransactionBlock,
 } from '../src/'
 
-const config = useConfig()
-// config.autoConnect.value = false
 
 const { currentAccount } = useCurrentAccount()
 const { signPersonalMessage } = useSignPersonalMessage()
@@ -21,8 +18,8 @@ const { signTransactionBlock } = useSignTransactionBlock()
 const { signAndExecuteTransactionBlock } = useSignAndExecuteTransactionBlock()
 
 
-const params = computed(() => ({ 
-    owner: currentAccount?.value?.address ?? '' 
+const params = computed(() => ({
+    owner: currentAccount?.value?.address ?? ''
 }))
 const result = useQuery({
     queryKey: ['getOwnedObjects', params],
