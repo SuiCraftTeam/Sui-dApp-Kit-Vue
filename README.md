@@ -28,6 +28,12 @@ import { ConnectButton } from 'sui-dapp-kit-vue'
 </template>
 ```
 
+## 📋 TODO
+
+- [ ] Implement RPC Composables
+- [ ] Complete Documentation
+- [ ] Improve customization of ConnectDialog styles and text.
+
 For more usage, please refer to the example project.
 
 ## 📄 License
