@@ -1,9 +1,10 @@
 # Sui-dApp-Kit-Vue
 
-The Sui dApp Kit Vue is a set of Vue 3 components, composables, and utilities to help developers build a dApp for the Sui ecosystem. It is comparable to the [official Sui dApp Kit](https://sdk.mystenlabs.com/dapp-kit); however, the Sui dApp Kit Vue is specifically intended for Vue 3 developers, rather than React developers.
+The Sui dApp Kit Vue is a set of Vue 3 components, composables, and utilities to help developers build a dApp for the Sui ecosystem. It is comparable to the official [Sui dApp Kit](https://sdk.mystenlabs.com/dapp-kit); however, the Sui dApp Kit Vue is specifically intended for Vue 3 developers, rather than React developers.
 
 ## ✨ Features
 
+* Fully typed
 * API is quite similar to official Sui dApp Kit.
 * Lables and styles of components can be customized.
 
