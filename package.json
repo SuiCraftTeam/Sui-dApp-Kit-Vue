@@ -38,6 +38,7 @@
     "@heroicons/vue": "^2.1.1",
     "@mysten/sui.js": "^0.50.1",
     "@mysten/wallet-standard": "^0.10.3",
+    "@mysten/zksend": "^0.2.2",
     "@tanstack/vue-query": "^5.22.2",
     "@vueuse/core": "^10.7.2",
     "vue": "^3.4.19"
