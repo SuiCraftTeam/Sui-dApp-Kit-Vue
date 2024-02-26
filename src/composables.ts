@@ -13,6 +13,7 @@ import {
     SuiSignAndExecuteTransactionBlockInput,
     SuiSignAndExecuteTransactionBlockOutput
 } from '@mysten/wallet-standard'
+import { ZKSEND_WALLET_NAME } from '@mysten/zksend'
 import { createGlobalState, useStorage } from '@vueuse/core'
 import { PartialBy } from './utilityTypes'
 
@@ -21,6 +22,8 @@ type SignPersonalMessageArgs = PartialBy<SuiSignPersonalMessageInput, 'account'>
 type SignTransactionBlockArgs = PartialBy<SuiSignTransactionBlockInput, 'account' | 'chain'>
 type SignAndExecuteTransactionBlockArgs = PartialBy<SuiSignAndExecuteTransactionBlockInput, 'account' | 'chain'>
 
+const SUI_WALLET_NAME = 'Sui Wallet'
+
 // API of WalletStandard
 const { get } = getWallets()
 
@@ -28,8 +31,8 @@ const { get } = getWallets()
 const useGlobalState = createGlobalState(() => {
     // config state
     const autoConnect = ref(true)
-    const preferredWallets = ref<string[]>()
-    const requiredFeatures = ref<(keyof WalletWithRequiredFeatures['features'])[]>()
+    const preferredWallets = ref([SUI_WALLET_NAME, ZKSEND_WALLET_NAME])
+    const requiredFeatures = ref<(keyof WalletWithRequiredFeatures['features'])[]>(['sui:signTransactionBlock'])
 
     // wallet state
     let currentWallet: WalletWithRequiredFeatures | undefined
@@ -65,9 +68,15 @@ export const usePersistState = createGlobalState(() => useStorage('sui-vue-conne
 const persistState = usePersistState()
 
 export const useWallets = () => {
-    const DEFAULT_REQUIRED_FEATURES: (keyof WalletWithRequiredFeatures['features'])[] = ['sui:signTransactionBlock',]
-    const wallets = get().filter((wallet): wallet is WalletWithRequiredFeatures => isWalletWithRequiredFeatureSet(wallet, DEFAULT_REQUIRED_FEATURES))
-    return { wallets }
+    const wallets = get().filter((wallet): wallet is WalletWithRequiredFeatures => isWalletWithRequiredFeatureSet(wallet, globalState.requiredFeatures.value))
+    return {
+        wallets: [
+            ...globalState.preferredWallets.value
+                .map(name => wallets.find(wallet => wallet.name === name))
+                .filter(Boolean) as WalletWithRequiredFeatures[],
+            ...wallets.filter(wallet => !globalState.preferredWallets.value.includes(wallet.name))
+        ]
+    }
 }
 
 export const useConnectWallet = () => {
