@@ -8,7 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
+/dist
 dist-ssr
 *.local
 
@@ -23,6 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# vitepress
-docs/.vitepress/cache
-docs/.vitepress/dist
+# vuepress
+docs/.vuepress/.cache
+docs/.vuepress/.temp
