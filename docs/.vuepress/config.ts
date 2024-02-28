@@ -7,6 +7,8 @@ export default defineUserConfig({
   title: 'Sui dApp Kit Vue',
   description: 'Similar to official Sui dApp Kit, but for Vue 3 developers.',
 
+  base: '/Sui-dApp-Kit-Vue/',
+
   theme: defaultTheme({
     logo: 'https://vuejs.press/images/hero.png',
 
