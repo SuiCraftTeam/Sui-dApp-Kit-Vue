@@ -4,9 +4,10 @@ The Sui dApp Kit Vue is a set of Vue 3 components, composables, and utilities to
 
 ## ✨ Features
 
-* Fully typed
-* API is quite similar to official Sui dApp Kit.
-* Lables and styles of components can be customized.
+* Fully typed.
+* Automatic wallet state management.
+* Components with customizable style and text.
+* Signing messages and committing transactions only takes a few lines of code.
 
 ## 📦 Install
 
@@ -29,13 +30,17 @@ import { ConnectButton } from 'sui-dapp-kit-vue'
 </template>
 ```
 
-For more usage, please refer to the example project.
 
-## 📋 TODO
+Read docs: [https://suicraftteam.github.io/Sui-dApp-Kit-Vue/](https://suicraftteam.github.io/Sui-dApp-Kit-Vue/)
 
-- [ ] Implement RPC Composables
-- [ ] Complete Documentation
-- [ ] Improve customization of ConnectDialog styles and text.
+Run example app:
+```sh:no-line-numbers
+git clone https://github.com/SuiCraftTeam/Sui-dApp-Kit-Vue.git
+cd Sui-dApp-Kit-Vue
+bun i
+bun dev
+```
+
 
 ## 📄 License
 
