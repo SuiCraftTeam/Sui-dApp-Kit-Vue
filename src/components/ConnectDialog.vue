@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, readonly } from 'vue'
 import { WalletWithRequiredFeatures } from '@mysten/wallet-standard'
-import { useWallets, useConnectWallet, useCurrentWallet } from '../composables'
+import { useConfig, useWallets, useConnectWallet, useCurrentWallet } from '../composables'
 import {
     TransitionRoot,
     TransitionChild,
@@ -13,7 +13,7 @@ import {
     RadioGroupOption,
 } from '@headlessui/vue'
 
-
+const config = useConfig()
 const { wallets } = useWallets()
 const { currentWalletStatus } = useCurrentWallet()
 const walletStatusMsg = ref()
@@ -51,31 +51,33 @@ defineExpose({ isOpen: readonly(isOpen), open, close })
                     <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0 scale-95" enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100" leave-to="opacity-0 scale-95">
                         <DialogPanel class="connect-dialog-panel">
                             <DialogTitle class="connect-dialog-title">
-                                {{ wallets.length == 0 ? 'Get Started with Sui' : 'Connect a Wallet' }}
+                                {{ wallets.length == 0 ? config.connectDialogText.noWallet : config.connectDialogText.connectWallet }}
                             </DialogTitle>
                             <div class="connect-dialog-content">
                                 <div class="mx-auto w-full p-4">
                                     <div class="max-w-96" v-if="wallets.length == 0">
-                                        <div class="text-base">Install the Sui Wallet Extension</div>
-                                        <p class="mb-4 text-sm text-gray-600">
-                                            We recommend pinning Sui Wallet to your taskbar for quicker access.
-                                        </p>
-                                        <div class="text-base">Create or Import a Wallet</div>
-                                        <p class="mb-4 text-sm text-gray-600">
-                                            Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.
-                                        </p>
-                                        <div class="text-base">Refresh Your Browser</div>
-                                        <p class="mb-4 text-sm text-gray-600">
-                                            Once you set up your wallet, refresh this window browser to load up the extension.
-                                        </p>
+                                        <slot name="no-wallets">
+                                            <div class="text-base">Install the Sui Wallet Extension</div>
+                                            <p class="mb-4 text-sm text-gray-600">
+                                                We recommend pinning Sui Wallet to your taskbar for quicker access.
+                                            </p>
+                                            <div class="text-base">Create or Import a Wallet</div>
+                                            <p class="mb-4 text-sm text-gray-600">
+                                                Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.
+                                            </p>
+                                            <div class="text-base">Refresh Your Browser</div>
+                                            <p class="mb-4 text-sm text-gray-600">
+                                                Once you set up your wallet, refresh this window browser to load up the extension.
+                                            </p>
 
-                                        <div class="flex justify-end">
-                                            <div class="connect-dialog-install-button">
-                                                <a href="https://chrome.google.com/webstore/detail/sui-wallet/opcgpfmipidbgpenhmajoajpbobppdil">
-                                                    Install Sui Wallet Extension
-                                                </a>
+                                            <div class="flex justify-end">
+                                                <div class="connect-dialog-install-button">
+                                                    <a href="https://chrome.google.com/webstore/detail/sui-wallet/opcgpfmipidbgpenhmajoajpbobppdil">
+                                                        Install
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </slot>
                                     </div>
                                     <RadioGroup v-else>
                                         <div class="space-y-2">

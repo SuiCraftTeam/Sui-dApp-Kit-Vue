@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import {
     getWallets,
     WalletAccount,
@@ -33,6 +33,14 @@ const useGlobalState = createGlobalState(() => {
     const autoConnect = ref(true)
     const preferredWallets = ref([SUI_WALLET_NAME, ZKSEND_WALLET_NAME])
     const requiredFeatures = ref<(keyof WalletWithRequiredFeatures['features'])[]>(['sui:signTransactionBlock'])
+    const connectButtonText = reactive({
+        connect: 'Connect',
+        disconnect: 'Disconnect'
+    })
+    const connectDialogText = reactive({
+        connectWallet: 'Connect a Wallet',
+        noWallet: 'Get Started with Sui',
+    })
 
     // wallet state
     let currentWallet: WalletWithRequiredFeatures | undefined
@@ -43,6 +51,8 @@ const useGlobalState = createGlobalState(() => {
         autoConnect,
         preferredWallets,
         requiredFeatures,
+        connectButtonText,
+        connectDialogText,
         currentWalletStatus,
         currentWallet,
         currentAccount,
@@ -55,6 +65,8 @@ export const useConfig = () => ({
     autoConnect: globalState.autoConnect,
     preferredWallets: globalState.preferredWallets,
     requiredFeatures: globalState.requiredFeatures,
+    connectButtonText: globalState.connectButtonText,
+    connectDialogText: globalState.connectDialogText
 })
 
 interface PersistState {

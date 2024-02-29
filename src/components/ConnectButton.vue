@@ -6,10 +6,6 @@ import { ChevronDownIcon, CheckCircleIcon } from '@heroicons/vue/20/solid'
 import ConnectDialog from './ConnectDialog.vue'
 import { useConfig, useWallets, useConnectWallet, useAccounts, usePersistState, useDisconnectWallet, useCurrentWallet, useCurrentAccount } from '../composables'
 
-const props = defineProps({
-    labelConnect: { type: String, default: 'Connect' },
-    labelDisconnect: { type: String, default: 'Disonnect' },
-})
 
 const config = useConfig()
 const persistState = usePersistState()
@@ -59,7 +55,7 @@ if (config.autoConnect.value && persistState.value.lastConnectedWalletName && pe
                             active ? 'bg-violet-500 text-white' : 'text-gray-900',
                             'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                         ]">
-                            {{ props.labelDisconnect }}
+                            {{ config.connectButtonText.disconnect }}
                         </button>
                         </MenuItem>
                     </div>
@@ -67,9 +63,13 @@ if (config.autoConnect.value && persistState.value.lastConnectedWalletName && pe
             </transition>
         </Menu>
 
-        <button v-else class="connect-btn" @click="connectDialog.open()"> {{ props.labelConnect }} </button>
+        <button v-else class="connect-btn" @click="connectDialog.open()"> {{ config.connectButtonText.connect }} </button>
 
-        <ConnectDialog ref="connectDialog" />
+        <ConnectDialog ref="connectDialog">
+            <template v-slot:no-wallets>
+                <slot name="no-wallets" />
+            </template>
+        </ConnectDialog>
     </div>
 </template>
 
