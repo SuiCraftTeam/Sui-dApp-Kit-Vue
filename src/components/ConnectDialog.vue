@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, readonly } from 'vue'
 import { WalletWithRequiredFeatures } from '@mysten/wallet-standard'
 import { useWallets, useConnectWallet, useCurrentWallet } from '../composables'
 import {
@@ -36,7 +36,7 @@ const open = () => {
 }
 const close = () => isOpen.value = false
 
-defineExpose({ isOpen, open, close })
+defineExpose({ isOpen: readonly(isOpen), open, close })
 </script>
 
 <template>
