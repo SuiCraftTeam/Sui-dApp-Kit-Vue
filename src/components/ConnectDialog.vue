@@ -36,7 +36,7 @@ const open = () => {
 }
 const close = () => isOpen.value = false
 
-defineExpose({ open, close })
+defineExpose({ isOpen, open, close })
 </script>
 
 <template>
