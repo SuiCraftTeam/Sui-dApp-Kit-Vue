@@ -42,15 +42,22 @@ Usually you can use default config, when you need you can get and set them:
 * autoConnect - Enables automatically reconnecting to the most recently used wallet account upon mounting.
 * preferredWallets - A list of wallets that are sorted to the top of the wallet list.
 * requiredFeatures - A list of features that are required for the dApp to function. This filters the list of wallets presented to users when selecting a wallet to connect from, ensuring that only wallets that meet the dApp requirements can connect.
-
+* connectButtonText - A object defines text of ConnectButton
+    - property 'connect' - label of connect button
+    - property 'disconnect' - label of disconnect button
+* connectDialogText - A object defines text of ConnectDialog
+    - property 'connectWallet' - Dialog title when user can connect to wallet(s) 
+    - property 'noWallet' - Dialog title when no wallets available
 
 ```vue
 <script setup lang="ts">
 import { useConfig } from 'sui-dapp-kit-vue'
-const { autoConnect, preferredWallets, requiredFeatures } = useConfig()
+const config = useConfig()
 
 // disable auto connect
-autoConnect.value = false
+config.autoConnect.value = false
+// custom connect button label
+config.connectButtonText.connect = '连接钱包'
 
 </script>
 ```
@@ -63,12 +70,29 @@ The ConnectButton shows the user a button to connect and disconnect a wallet. Us
 
 ```vue
 <script setup lang="ts">
-import { ConnectButton } from 'sui-dapp-kit-vue'
+import { useConfig, ConnectButton } from 'sui-dapp-kit-vue'
+
 </script>
 
 <template>
     <div>
         <ConnectButton />
+    </div>
+</template>
+```
+
+**Slot**
+
+Slot with name "no-wallets" of ConnectButton is used to customize content when no wallets available.
+
+```vue
+<template>
+    <div>
+        <ConnectButton>
+            <template v-slot:no-wallets>
+                Please install a wallet first, Sui Wallet is recommended.
+            </template>
+        </ConnectButton>
     </div>
 </template>
 ```
@@ -97,6 +121,23 @@ const connectDialog = ref()
 * isOpen - boolean, whether the dialog is open or not 
 * open - function, open the dialog
 * close - function, close the dialog
+
+**Slot**
+
+Slot with name "no-wallets" of ConnectDialog is used to customize content when no wallets available.
+
+```vue
+<template>
+    <div>
+        <ConnectDialog>
+            <template v-slot:no-wallets>
+                Please install a wallet first, Sui Wallet is recommended.
+            </template>
+        </ConnectDialog>
+    </div>
+</template>
+```
+
 
 ## Composables
 
