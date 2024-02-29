@@ -1,33 +1,27 @@
 ---
 home: true
 title: Home
-heroImage: https://vuejs.press/images/hero.png
+heroText: Sui dApp Kit for Vue 3 Developers
+# heroImage: images/suicraft.png
 actions:
   - text: Get Started
-    link: /getting-started.html
+    link: /get-started.md
     type: primary
-
-  - text: Introduction
-    link: https://vuejs.press/guide/introduction.html
+  - text: View on Github
+    link: https://github.com/SuiCraftTeam/Sui-dApp-Kit-Vue
     type: secondary
 
 features:
   - title: Simplicity First
-    details: Minimal setup with markdown-centered project structure helps you focus on writing.
-  - title: Vue-Powered
-    details: Enjoy the dev experience of Vue, use Vue components in markdown, and develop custom themes with Vue.
-  - title: Performant
-    details: VuePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
-  - title: Themes
-    details: Providing a default theme out of the box. You can also choose a community theme or create your own one.
-  - title: Plugins
-    details: Flexible plugin API, allowing plugins to provide lots of plug-and-play features for your site.
-  - title: Bundlers
-    details: Default bundler is Vite, while Webpack is also supported. Choose the one you like!
+    details: Automatic wallet state management.
+  - title: Pre-built Components
+    details: With customizable style and text.
+  - title: Easy-to-use Composables
+    details: Signing messages and committing transactions only takes a few lines of code.
 
-footer: MIT Licensed | Copyright © 2018-present VuePress Community
+footer: Released under the MIT License. Copyright © 2024 SuiCraftTeam
 ---
 
-This is the content of home page. Check [Home Page Docs][default-theme-home] for more details.
+Developed by [SuiCraft Team](https://github.com/SuiCraftTeam), and used in [SuiCraft](https://suicraft.xyz).
 
-[default-theme-home]: https://vuejs.press/reference/default-theme/frontmatter.html#home-page
+[SuiCraft](https://suicraft.xyz) helps users to issue tokens, mint NFTs, and run DAOs on the Sui blockchain with ease, eliminating the need for coding skills or command-line experience.

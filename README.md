@@ -18,6 +18,7 @@ npm i sui-dapp-kit-vue
 ## 🤹‍♀️ Usage
 
 Add a connect button:
+
 ```vue
 <script setup lang="ts">
 import { ConnectButton } from 'sui-dapp-kit-vue'

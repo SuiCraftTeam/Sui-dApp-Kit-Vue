@@ -4,15 +4,24 @@ import { viteBundler } from '@vuepress/bundler-vite'
 
 export default defineUserConfig({
   lang: 'en-US',
-  title: 'Sui dApp Kit Vue',
-  description: 'Similar to official Sui dApp Kit, but for Vue 3 developers.',
+  title: 'Sui dApp Kit Vue Documentation',
+  description: `Inspired by the official Sui dApp Kit, with quite similar API to the official's.`,
 
   base: '/Sui-dApp-Kit-Vue/',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.press/images/hero.png',
-
-    navbar: ['/', '/getting-started'],
+    // logo: '/images/logo.png',
+    navbar: [
+      '/',
+      '/get-started',
+      {
+        text: 'Github',
+        link: 'https://github.com/SuiCraftTeam/Sui-dApp-Kit-Vue',
+      },
+    ],
+    themePlugins: {
+      backToTop: false
+    }
   }),
 
   bundler: viteBundler(),
