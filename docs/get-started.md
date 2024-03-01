@@ -4,6 +4,7 @@ Comparable to the official [Sui dApp Kit][sui-dapp-kit]; however, the Sui dApp K
 
 ## Install
 
+Here we recommend [bun](https://bun.sh) as package manager.
 <CodeGroup>
 <CodeGroupItem title="npm">
 
@@ -26,7 +27,7 @@ pnpm add sui-dapp-kit-vue
 ```
 
 </CodeGroupItem>
-<CodeGroupItem title="bun">
+<CodeGroupItem title="bun" active="true">
 
 ```sh:no-line-numbers
 bun add sui-dapp-kit-vue
