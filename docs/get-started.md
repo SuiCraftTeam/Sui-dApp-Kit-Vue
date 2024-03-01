@@ -58,7 +58,6 @@ const config = useConfig()
 config.autoConnect.value = false
 // custom connect button label
 config.connectButtonText.connect = '连接钱包'
-
 </script>
 ```
 
@@ -70,8 +69,7 @@ The ConnectButton shows the user a button to connect and disconnect a wallet. Us
 
 ```vue
 <script setup lang="ts">
-import { useConfig, ConnectButton } from 'sui-dapp-kit-vue'
-
+import { ConnectButton } from 'sui-dapp-kit-vue'
 </script>
 
 <template>
@@ -86,6 +84,10 @@ import { useConfig, ConnectButton } from 'sui-dapp-kit-vue'
 Slot with name "no-wallets" of ConnectButton is used to customize content when no wallets available.
 
 ```vue
+<script setup lang="ts">
+import { ConnectButton } from 'sui-dapp-kit-vue'
+</script>
+
 <template>
     <div>
         <ConnectButton>
@@ -127,6 +129,10 @@ const connectDialog = ref()
 Slot with name "no-wallets" of ConnectDialog is used to customize content when no wallets available.
 
 ```vue
+<script setup lang="ts">
+import { ConnectDialog } from 'sui-dapp-kit-vue'
+</script>
+
 <template>
     <div>
         <ConnectDialog>
@@ -138,6 +144,38 @@ Slot with name "no-wallets" of ConnectDialog is used to customize content when n
 </template>
 ```
 
+## Styling
+You can customize style of ConnectButton and ConnectDialog via :deep() pseudo-class.
+
+```vue
+<script setup lang="ts">
+import { ConnectButton } from 'sui-dapp-kit-vue'
+</script>
+
+<template>
+    <div>
+        <ConnectButton />
+    </div>
+</template>
+
+<style scoped>
+:deep(.connect-btn) {
+    // here we use tailwind to customize bg color
+    @apply bg-red-700;
+}
+</style>
+```
+
+**CSS classes used in ConnectButton**
+* connect-btn
+* connect-btn-menu-btn
+* connect-btn-menu-item
+* connect-btn-menu-item:hover
+
+**CSS classes used in ConnectDialog**
+* connect-dialog-panel
+* connect-dialog-title
+* connect-dialog-install-button
 
 ## Composables
 
