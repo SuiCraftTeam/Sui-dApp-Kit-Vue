@@ -26,3 +26,5 @@ dist-ssr
 # vuepress
 docs/.vuepress/.cache
 docs/.vuepress/.temp
+
+bun.lockb
