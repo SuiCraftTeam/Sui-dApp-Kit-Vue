@@ -421,3 +421,12 @@ npm run dev
 [sui-dapp-kit]: https://sdk.mystenlabs.com/dapp-kit
 [sui-dapp-kit-vue]: https://github.com/SuiCraftTeam/Sui-dApp-Kit-Vue
 
+## Change log
+
+### 0.2.0
+
+* Improved customization
+
+### 0.1.0
+
+* Initial release

@@ -12,11 +12,11 @@ actions:
     type: secondary
 
 features:
-  - title: Simplicity First
+  - title: Wallet
     details: Automatic wallet state management.
-  - title: Pre-built Components
-    details: With customizable style and text.
-  - title: Easy-to-use Composables
+  - title: Components
+    details: Customizable style and text.
+  - title: Composables
     details: Signing messages and committing transactions only takes a few lines of code.
 
 footer: Released under the MIT License. Copyright © 2024 SuiCraftTeam

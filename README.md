@@ -32,14 +32,14 @@ import { ConnectButton } from 'sui-dapp-kit-vue'
 ```
 
 
-Read docs: [https://suicraftteam.github.io/Sui-dApp-Kit-Vue/](https://suicraftteam.github.io/Sui-dApp-Kit-Vue/)
+For more usage please read docs: [https://suicraftteam.github.io/Sui-dApp-Kit-Vue/](https://suicraftteam.github.io/Sui-dApp-Kit-Vue/)
 
 Run example app:
 ```sh:no-line-numbers
 git clone https://github.com/SuiCraftTeam/Sui-dApp-Kit-Vue.git
 cd Sui-dApp-Kit-Vue
-bun i
-bun dev
+npm i
+npm run dev
 ```
 
 

@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/SuiCraftTeam/Sui-dApp-Kit-Vue.git"
   },
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "type": "module",
   "files": [

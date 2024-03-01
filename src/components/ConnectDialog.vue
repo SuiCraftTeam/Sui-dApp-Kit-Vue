@@ -53,7 +53,7 @@ defineExpose({ isOpen: readonly(isOpen), open, close })
                             <DialogTitle class="connect-dialog-title">
                                 {{ wallets.length == 0 ? config.connectDialogText.noWallet : config.connectDialogText.connectWallet }}
                             </DialogTitle>
-                            <div class="connect-dialog-content">
+                            <div class="mt-2">
                                 <div class="mx-auto w-full p-4">
                                     <div class="max-w-96" v-if="wallets.length == 0">
                                         <slot name="no-wallets">
@@ -124,10 +124,6 @@ defineExpose({ isOpen: readonly(isOpen), open, close })
 
 .connect-dialog-title {
     @apply text-lg text-center font-bold leading-6 text-gray-900;
-}
-
-.connect-dialog-content {
-    @apply mt-2;
 }
 
 .connect-dialog-install-button {
