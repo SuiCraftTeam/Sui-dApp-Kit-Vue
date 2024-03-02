@@ -222,7 +222,7 @@ const { accounts } = useAccounts()
 
 ### useCurrentWallet
 
-useCurrentWallet retrieves the wallet that is currently connected to the dApp and its connection status, if one exists.
+useCurrentWallet retrieves a function and a ref object, the function gets the wallet that is currently connected to the dApp and the ref object is its connection status. The reason of using a getter function rather than a ref object to retrieve current wallet is that Proxy can't access private member of a object while the wallet object uses private members.
 
 ```vue
 <script setup lang="ts">
@@ -230,6 +230,12 @@ import { useCurrentWallet } from 'sui-dapp-kit-vue'
 const { currentWalletStatus, currentWallet } = useCurrentWallet()
 // ...
 </script>
+
+<template>
+    <div>
+        {{ currentWallet()?.name }}
+    </div>
+</template>
 ```
 
 **Wallet properties**

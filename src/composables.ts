@@ -1,4 +1,4 @@
-import { reactive, ref } from 'vue'
+import { reactive, ref, Ref } from 'vue'
 import {
     getWallets,
     WalletAccount,
@@ -28,36 +28,44 @@ const SUI_WALLET_NAME = 'Sui Wallet'
 const { get } = getWallets()
 
 // global state in memory
+interface GlobalState {
+    autoConnect: Ref<boolean>;
+    preferredWallets: Ref<string[]>;
+    requiredFeatures: Ref<(keyof WalletWithRequiredFeatures['features'])[]>;
+    connectButtonText: {
+        connect: string;
+        disconnect: string;
+    },
+    connectDialogText: {
+        connectWallet: string;
+        noWallet: string;
+    },
+    currentWallet: WalletWithRequiredFeatures | undefined;
+    currentWalletStatus: Ref<"connecting" | "connected" | "disconnected" | undefined>;
+    currentAccount: Ref<WalletAccount | undefined>;
+    accounts: Ref<readonly WalletAccount[] | undefined>;
+}
 const useGlobalState = createGlobalState(() => {
-    // config state
-    const autoConnect = ref(true)
-    const preferredWallets = ref([SUI_WALLET_NAME, ZKSEND_WALLET_NAME])
-    const requiredFeatures = ref<(keyof WalletWithRequiredFeatures['features'])[]>(['sui:signTransactionBlock'])
-    const connectButtonText = reactive({
-        connect: 'Connect',
-        disconnect: 'Disconnect'
-    })
-    const connectDialogText = reactive({
-        connectWallet: 'Connect a Wallet',
-        noWallet: 'Get Started with Sui',
-    })
-
-    // wallet state
-    let currentWallet: WalletWithRequiredFeatures | undefined
-    const currentWalletStatus = ref<'connecting' | 'connected' | 'disconnected'>()
-    const currentAccount = ref<WalletAccount>()
-    const accounts = ref<readonly WalletAccount[]>()
-    return {
-        autoConnect,
-        preferredWallets,
-        requiredFeatures,
-        connectButtonText,
-        connectDialogText,
-        currentWalletStatus,
-        currentWallet,
-        currentAccount,
-        accounts
-    }
+    const state = {
+        // config state
+        autoConnect: ref(true),
+        preferredWallets: ref([SUI_WALLET_NAME, ZKSEND_WALLET_NAME]),
+        requiredFeatures: ref<(keyof WalletWithRequiredFeatures['features'])[]>(['sui:signTransactionBlock']),
+        connectButtonText: reactive({
+            connect: 'Connect',
+            disconnect: 'Disconnect'
+        }),
+        connectDialogText: reactive({
+            connectWallet: 'Connect a Wallet',
+            noWallet: 'Get Started with Sui',
+        }),
+        // wallet state
+        currentWallet: undefined,
+        currentWalletStatus: ref(),
+        currentAccount: ref<WalletAccount>(),
+        accounts: ref<readonly WalletAccount[]>()
+    } as GlobalState
+    return state
 })
 const globalState = useGlobalState()
 
@@ -94,10 +102,10 @@ export const useWallets = () => {
 export const useConnectWallet = () => {
     const connect = async (wallet: WalletWithRequiredFeatures) => {
         try {
+            globalState.currentWallet = wallet
             globalState.currentWalletStatus.value = 'connecting'
             const connectOutput = await wallet.features[StandardConnect].connect()
             globalState.accounts.value = connectOutput.accounts
-            globalState.currentWallet = wallet
 
             persistState.value.lastConnectedWalletName = wallet.name
             if (persistState.value.lastConnectedAccountAddress) {
@@ -126,6 +134,7 @@ export const useConnectWallet = () => {
             globalState.currentWalletStatus.value = 'connected'
         } catch (err) {
             globalState.currentWalletStatus.value = 'disconnected'
+            globalState.currentWallet = undefined
             // console.error('Failed to connect the application to the selected wallet.', err)
         }
     }
@@ -153,7 +162,7 @@ export const useDisconnectWallet = () => {
 
 export const useAccounts = () => ({ accounts: globalState.accounts })
 
-export const useCurrentWallet = () => ({ currentWallet: globalState.currentWallet, currentWalletStatus: globalState.currentWalletStatus })
+export const useCurrentWallet = () => ({ currentWallet: () => globalState.currentWallet, currentWalletStatus: globalState.currentWalletStatus })
 
 export const useCurrentAccount = () => ({ currentAccount: globalState.currentAccount })
 

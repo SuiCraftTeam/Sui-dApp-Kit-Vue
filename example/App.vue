@@ -5,13 +5,14 @@ import { useQuery } from '@tanstack/vue-query'
 import {
     ConnectButton,
     TransactionBlock,
+    useCurrentWallet,
     useCurrentAccount,
     useSignPersonalMessage,
     useSignTransactionBlock,
     useSignAndExecuteTransactionBlock,
 } from '../src/'
 
-
+const { currentWallet } = useCurrentWallet()
 const { currentAccount } = useCurrentAccount()
 const { signPersonalMessage } = useSignPersonalMessage()
 const { signTransactionBlock } = useSignTransactionBlock()
@@ -59,6 +60,12 @@ const signAndExecuteEmptyTransactionBlock = async () => {
     <div>
         <ConnectButton />
         <div>
+            <h2>Current Wallet</h2>
+            <div>
+                {{ currentWallet()?.name }}
+            </div>
+        </div>
+        <div>
             <h2>Owned Objects</h2>
             <div>
                 {{ result.data }}
@@ -89,4 +96,3 @@ const signAndExecuteEmptyTransactionBlock = async () => {
         </div>
     </div>
 </template>
-
