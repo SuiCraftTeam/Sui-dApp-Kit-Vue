@@ -143,6 +143,7 @@ export const useDisconnectWallet = () => {
         globalState.currentWalletStatus.value = 'disconnected'
         globalState.currentWallet = undefined
         globalState.currentAccount.value = undefined
+        globalState.accounts.value = undefined
         persistState.value.lastConnectedWalletName = undefined
         persistState.value.lastConnectedAccountAddress = undefined
     }
