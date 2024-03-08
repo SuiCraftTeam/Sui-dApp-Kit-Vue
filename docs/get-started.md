@@ -100,6 +100,10 @@ import { ConnectButton } from 'sui-dapp-kit-vue'
 </template>
 ```
 
+**Exposes**
+* openDialog open ConnectDialog instance associated with ConnectButton
+* closeDialog close ConnectDialog instance associated with ConnectButton
+
 ### ConnectDialog
 
 The ConnectDialog component opens a dialog that guides the user through connecting their wallet to the dApp. You can use ConnectDialog without ConnectButton and control the opening and closing of ConnectDialog by yourself:
@@ -467,6 +471,10 @@ npm run dev
 [sui-dapp-kit-vue]: https://github.com/SuiCraftTeam/Sui-dApp-Kit-Vue
 
 ## Change log
+
+### 0.4.0
+
+* Added 2 exposed methods for ConnectButton
 
 ### 0.2.0
 
