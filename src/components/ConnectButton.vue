@@ -21,6 +21,11 @@ const connectDialog = ref()
 if (config.autoConnect.value && persistState.value.lastConnectedWalletName && persistState.value.lastConnectedAccountAddress) {
     wallets.forEach(w => w.name === persistState.value.lastConnectedWalletName && connect(w))
 }
+
+const openDialog = () => connectDialog.value.open()
+const closeDialog = () => connectDialog.value.close()
+
+defineExpose({ openDialog, closeDialog })
 </script>
 
 
@@ -80,6 +85,7 @@ if (config.autoConnect.value && persistState.value.lastConnectedWalletName && pe
 .connect-btn-menu-item {
     @apply flex w-full items-center rounded-md p-2 text-sm text-gray-900;
 }
+
 .connect-btn-menu-item:hover {
     @apply bg-black/30 text-white;
 }
