@@ -125,10 +125,8 @@ export const useConnectWallet = () => {
                     persistState.value.lastConnectedAccountAddress = undefined
                     off()
                 } else {
-                    if (!accounts.find(account => account.address === globalState.currentAccount.value?.address)) {
-                        globalState.currentAccount.value = accounts[0]
-                        persistState.value.lastConnectedAccountAddress = globalState.currentAccount.value.address
-                    }
+                    globalState.currentAccount.value = accounts[0]
+                    persistState.value.lastConnectedAccountAddress = globalState.currentAccount.value.address
                 }
             })
             globalState.currentWalletStatus.value = 'connected'
