@@ -2,6 +2,8 @@
 
 The Sui dApp Kit Vue is a set of Vue 3 components, composables, and utilities to help developers build a dApp for the Sui ecosystem. It is comparable to the official [Sui dApp Kit](https://sdk.mystenlabs.com/dapp-kit); however, the Sui dApp Kit Vue is specifically intended for Vue 3 developers, rather than React developers.
 
+Sui dApp Kit Vue is used in [SuiCraft](https://suicraft.xyz), which helps users to issue tokens, mint NFTs, and run DAOs on the Sui blockchain with ease, eliminating the need for coding skills or command-line experience.
+
 ## ✨ Features
 
 * Fully typed.
