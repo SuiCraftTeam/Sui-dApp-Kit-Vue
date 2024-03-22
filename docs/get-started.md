@@ -474,6 +474,10 @@ npm run dev
 
 ## Change log
 
+### 0.4.2
+
+* bumped deps
+
 ### 0.4.0
 
 * Added 2 exposed methods for ConnectButton
