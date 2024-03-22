@@ -472,7 +472,11 @@ npm run dev
 
 ## Change log
 
-### 0.4.2
+### 0.4.4
+
+* moved @tanstack/vue-query from dependencies to devDependencies
+
+### 0.4.3
 
 * bumped deps
 

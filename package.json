@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/SuiCraftTeam/Sui-dApp-Kit-Vue.git"
   },
-  "version": "0.4.3",
+  "version": "0.4.4",
   "license": "MIT",
   "type": "module",
   "files": [
@@ -42,11 +42,11 @@
     "@mysten/sui.js": "^0.51.0",
     "@mysten/wallet-standard": "^0.11.0",
     "@mysten/zksend": "^0.3.1",
-    "@tanstack/vue-query": "^5.22.2",
     "@vueuse/core": "^10.7.2",
     "vue": "^3.4.19"
   },
   "devDependencies": {
+    "@tanstack/vue-query": "^5.28.7",
     "@types/node": "^20.11.20",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vuepress/bundler-vite": "next",
