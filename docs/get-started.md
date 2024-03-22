@@ -2,8 +2,6 @@
 
 Comparable to the official [Sui dApp Kit][sui-dapp-kit]; however, the Sui dApp Kit Vue is specifically intended for Vue 3 developers. Sui dApp Kit Vue is fully typed, the details of the API can be seen through the code prompt, or you can check the type declaration.
 
-Sui dApp Kit Vue is used in [SuiCraft](https://suicraft.xyz), which helps users to issue tokens, mint NFTs, and run DAOs on the Sui blockchain with ease, eliminating the need for coding skills or command-line experience.
-
 ## Install
 
 Here we recommend [bun](https://bun.sh) as package manager.
